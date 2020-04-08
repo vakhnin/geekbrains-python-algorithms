@@ -8,14 +8,14 @@
 def summa(n):
     if not n > 0:
         return 0
-    return n + summa(n-1)
+    return n + summa(n - 1)
 
 
 print("введите натуральное число")
 n = int(input("число:"))
 
 res1 = summa(n)
-res2 = n * (n+1) // 2
+res2 = n * (n + 1) // 2
 
 print(f'Сумма от 1 до n = {res1}')
 print(f'n*(n+1)/2 = {res2}')
