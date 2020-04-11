@@ -8,7 +8,7 @@ MAX_ITEM = 30
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 
 if not len(array):
-    print("Массив нулевой длинны")
+    print("Массив нулевой длины")
     exit(0)
 
 max_index = 0
