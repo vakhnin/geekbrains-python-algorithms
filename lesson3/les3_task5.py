@@ -14,7 +14,6 @@ if not len(array):
     print("Массив нулевой длины")
     exit(0)
 
-# Немного пофантазировал в реализации алгоритма
 max_index = None
 
 for i in range(len(array)):
