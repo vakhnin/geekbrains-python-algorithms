@@ -15,20 +15,19 @@ if not len(array):
     exit(0)
 
 # Немного пофантазировал в реализации алгоритма
-for i in range(len(array)):
-    if array[i] < 0:
-        max_index = i
-        break
-else:
-    print("Исходный массив")
-    print(array)
-    print("В массиве нет отрицательных элементов")
-    exit(0)
+max_index = None
 
-for i in range(max_index + 1, len(array)):
-    if 0 > array[i] > array[max_index]:
+for i in range(len(array)):
+    if max_index is None:
+        if array[i] < 0:
+            max_index = i
+    elif 0 > array[i] > array[max_index]:
         max_index = i
 
 print("Исходный массив")
 print(array)
-print(f'Максимальный отрицательный элемент: {array[max_index]} в позиции: {max_index}')
+
+if max_index is None:
+    print("В массиве нет отрицательных элементов")
+else:
+    print(f'Максимальный отрицательный элемент: {array[max_index]} в позиции: {max_index}')
