@@ -1,5 +1,6 @@
 # Простое n число
 import timeit
+import cProfile
 
 
 def test_prime(func):
@@ -30,8 +31,14 @@ def sieve(n):
 
 # test_prime(sieve)
 
-print(timeit.timeit('sieve(10)', number=100, globals=globals()))  # 0.0024107000000000017
-print(timeit.timeit('sieve(50)', number=100, globals=globals()))  # 0.0841172
-print(timeit.timeit('sieve(100)', number=100, globals=globals()))  # 0.3424142
-print(timeit.timeit('sieve(300)', number=100, globals=globals()))  # 3.5862416999999995
-print(timeit.timeit('sieve(500)', number=100, globals=globals()))  # 11.060683000000001
+# print(timeit.timeit('sieve(10)', number=100, globals=globals()))  # 0.0024107000000000017
+# print(timeit.timeit('sieve(50)', number=100, globals=globals()))  # 0.0841172
+# print(timeit.timeit('sieve(100)', number=100, globals=globals()))  # 0.3424142
+# print(timeit.timeit('sieve(300)', number=100, globals=globals()))  # 3.5862416999999995
+# print(timeit.timeit('sieve(500)', number=100, globals=globals()))  # 11.060683000000001
+
+cProfile.run('sieve(10)')  # 1    0.000    0.000    0.000    0.000 les4_task2.py:14(<listcomp>)
+cProfile.run('sieve(50)')  # 1    0.000    0.000    0.000    0.000 les4_task2.py:14(<listcomp>)
+cProfile.run('sieve(100)')  # 1    0.000    0.000    0.000    0.000 les4_task2.py:14(<listcomp>)
+cProfile.run('sieve(300)')  # 1    0.003    0.003    0.003    0.003 les4_task2.py:14(<listcomp>)
+cProfile.run('sieve(500)')  # 1    0.009    0.009    0.009    0.009 les4_task2.py:14(<listcomp>)
