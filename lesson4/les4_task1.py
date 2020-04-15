@@ -1,5 +1,6 @@
 # Три реализации функции сложения чисел от 0 до n
 import timeit
+import cProfile
 
 
 def test_prime(func):
@@ -30,20 +31,38 @@ def summa3(n):
 # test_prime(summa2)
 # test_prime(summa3)
 
-print(timeit.timeit('summa1(10)', number=100, globals=globals()))  # 0.0001571000000000003
-print(timeit.timeit('summa1(20)', number=100, globals=globals()))  # 0.00041280000000000136
-print(timeit.timeit('summa1(100)', number=100, globals=globals()))  # 0.0015536999999999981
-print(timeit.timeit('summa1(300)', number=100, globals=globals()))  # 0.005265300000000004
-print(timeit.timeit('summa1(990)', number=100, globals=globals()))  # 0.022788499999999996
+# print(timeit.timeit('summa1(10)', number=100, globals=globals()))  # 0.0001571000000000003
+# print(timeit.timeit('summa1(20)', number=100, globals=globals()))  # 0.00041280000000000136
+# print(timeit.timeit('summa1(100)', number=100, globals=globals()))  # 0.0015536999999999981
+# print(timeit.timeit('summa1(300)', number=100, globals=globals()))  # 0.005265300000000004
+# print(timeit.timeit('summa1(990)', number=100, globals=globals()))  # 0.022788499999999996
+#
+# print(timeit.timeit('summa2(10)', number=100, globals=globals()))  # 7.719999999999949e-05
+# print(timeit.timeit('summa2(20)', number=100, globals=globals()))  # 0.0001315000000000066
+# print(timeit.timeit('summa2(100)', number=100, globals=globals()))  # 0.0005319999999999908
+# print(timeit.timeit('summa2(300)', number=100, globals=globals()))  # 0.0015066999999999997
+# print(timeit.timeit('summa2(990)', number=100, globals=globals()))  # 0.006842899999999999
+#
+# print(timeit.timeit('summa3(10)', number=100, globals=globals()))  # 2.0000000000006124e-05
+# print(timeit.timeit('summa3(20)', number=100, globals=globals()))  # 1.7199999999994997e-05
+# print(timeit.timeit('summa3(100)', number=100, globals=globals()))  # 1.8100000000007e-05
+# print(timeit.timeit('summa3(300)', number=100, globals=globals()))  # 2.4700000000002498e-05
+# print(timeit.timeit('summa3(990)', number=100, globals=globals()))  # 3.5800000000002496e-05
 
-print(timeit.timeit('summa2(10)', number=100, globals=globals()))  # 7.719999999999949e-05
-print(timeit.timeit('summa2(20)', number=100, globals=globals()))  # 0.0001315000000000066
-print(timeit.timeit('summa2(100)', number=100, globals=globals()))  # 0.0005319999999999908
-print(timeit.timeit('summa2(300)', number=100, globals=globals()))  # 0.0015066999999999997
-print(timeit.timeit('summa2(990)', number=100, globals=globals()))  # 0.006842899999999999
+# cProfile.run('summa1(10)')  # 11/1    0.000    0.000    0.000    0.000 les4_task1.py:13(summa1)
+# cProfile.run('summa1(50)')  # 51/1    0.000    0.000    0.000    0.000 les4_task1.py:13(summa1)
+# cProfile.run('summa1(100)')  # 101/1    0.000    0.000    0.000    0.000 les4_task1.py:13(summa1)
+# cProfile.run('summa1(300)')  # 301/1    0.000    0.000    0.000    0.000 les4_task1.py:13(summa1)
+# cProfile.run('summa1(500)')  # 501/1    0.000    0.000    0.000    0.000 les4_task1.py:13(summa1)
 
-print(timeit.timeit('summa3(10)', number=100, globals=globals()))  # 2.0000000000006124e-05
-print(timeit.timeit('summa3(20)', number=100, globals=globals()))  # 1.7199999999994997e-05
-print(timeit.timeit('summa3(100)', number=100, globals=globals()))  # 1.8100000000007e-05
-print(timeit.timeit('summa3(300)', number=100, globals=globals()))  # 2.4700000000002498e-05
-print(timeit.timeit('summa3(990)', number=100, globals=globals()))  # 3.5800000000002496e-05
+# cProfile.run('summa2(10)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:19(summa2)
+# cProfile.run('summa2(50)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:19(summa2)
+# cProfile.run('summa2(100)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:19(summa2)
+# cProfile.run('summa2(300)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:19(summa2)
+# cProfile.run('summa2(500)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:19(summa2)
+
+cProfile.run('summa3(10)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
+cProfile.run('summa3(50)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
+cProfile.run('summa3(100)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
+cProfile.run('summa3(300)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
+cProfile.run('summa3(500)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
