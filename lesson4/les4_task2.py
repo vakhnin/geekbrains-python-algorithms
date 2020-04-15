@@ -1,4 +1,5 @@
 # Простое n число
+import timeit
 
 
 def test_prime(func):
@@ -27,4 +28,10 @@ def sieve(n):
                 return i
 
 
-test_prime(sieve)
+# test_prime(sieve)
+
+print(timeit.timeit('sieve(10)', number=100, globals=globals()))  # 0.0024107000000000017
+print(timeit.timeit('sieve(50)', number=100, globals=globals()))  # 0.0841172
+print(timeit.timeit('sieve(100)', number=100, globals=globals()))  # 0.3424142
+print(timeit.timeit('sieve(300)', number=100, globals=globals()))  # 3.5862416999999995
+print(timeit.timeit('sieve(500)', number=100, globals=globals()))  # 11.060683000000001
