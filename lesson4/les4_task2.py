@@ -31,19 +31,21 @@ def sieve(n):
 
 
 def prime(n):
-    prime_arr = [2, 3, 5, 7]
+    shift = 2
+    if n == 1:
+        return 2
+    prime_arr = [3, 5, 7]
     for i in range(11, n * n + 2, 2):
-        if len(prime_arr) >= n:
+        if len(prime_arr) >= n + shift:
             break
-        if (i % 2 == 0) or (i % 10 == 5):
-            continue
+        sqrt_i = sqrt(i)
         for j in prime_arr:
-            if j > sqrt(i):
+            if j > sqrt_i:
                 prime_arr.append(i)
                 break
             if i % j == 0:
                 break
-    return prime_arr[n-1]
+    return prime_arr[n - shift]
 
 
 # test_prime(sieve)
@@ -60,4 +62,16 @@ def prime(n):
 # cProfile.run('sieve(300)')  # 1    0.003    0.003    0.003    0.003 les4_task2.py:14(<listcomp>)
 # cProfile.run('sieve(500)')  # 1    0.009    0.009    0.009    0.009 les4_task2.py:14(<listcomp>)
 
-test_prime(prime)
+# test_prime(prime)
+
+# print(timeit.timeit('prime(10)', number=100, globals=globals()))  #
+# print(timeit.timeit('prime(50)', number=100, globals=globals()))  #
+# print(timeit.timeit('prime(100)', number=100, globals=globals()))  #
+# print(timeit.timeit('prime(300)', number=100, globals=globals()))  #
+# print(timeit.timeit('prime(500)', number=100, globals=globals()))  #
+
+cProfile.run('prime(10)')  # 16    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+cProfile.run('prime(50)')  # 116    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+cProfile.run('prime(100)')  # 277    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+cProfile.run('prime(300)')  # 995    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
+cProfile.run('prime(500)')  # 1792    0.000    0.000    0.000    0.000 {built-in method math.sqrt}
