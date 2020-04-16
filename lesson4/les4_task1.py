@@ -70,7 +70,7 @@ cProfile.run('summa3(500)')  # 1    0.000    0.000    0.000    0.000 les4_task1.
 # Подсчет суммы чисел от 0 до n реализован в виде функций: рекурсивно, циклом и по формулам.
 # Задача не очень сложная, но хорошо подходит для анализа.
 #
-# При помощи timeit было замерено время выполнения при n = (10, 50, 100, 300, 500)
+# При помощи timeit было замерено время выполнения при n = (10, 20, 100, 300, 990)
 # и составлены графики (графики можно смотреть по одному):
 # http://grafikus.ru/#H8KLCADChhfCl14CA8K1wpPDi27CgzAQRcO/w4VrasONw7htfsKlw6oiVVM1agjCkcKgKijDisK/d0wwNsKqwoPClEVYw4Q3w4PDsRU5Jhc2NMKHE8KrGcKrKMOtwoZbw7rCmMOXw6F4W8OHwoUZEzPDjsKTwpnDucKlw4UCUMO6wqLCpMKnw7TDmVHDhCnCscO6w4IgfMO0NMOqaMOSwoZGDAVhw7/CtcKiPMOfPcO3w7ltw7oWwrcOwrEtbAEOAMKoLULCusOkw5ITUMKxQhUKwpdIwpQmwrAiw5XDpjBqLcKNXy7Ch8KBwpXCkcKVK1YLwqNlKlYBVRHDtT5DwoXCsMOOwqlUOz3CgcKOaGbDghRmwrYwc8O/ZjQMw4fDkcO9NMONLsOIOx5Ow7vDmWPDl8K0bR/CjgbClh/DvsKgbMKwFsOTw5N7wrUhGyXDqsOkw4RswrkGLcOzVnAbwq7CqcOUZMOnw6LDrX3DmWDCnBIuY8KfK1tsw4nClsKPw4kWPHvCpcOBwqBQw7sXw5Blw5vDiMOzM8KhwpfDi0bCtsKgG8K5w4vDvi0LWcKQLcK4wrLCiRTDisK7CBdsS8Kuw50KNhF+wp5vecOfN2HDp8Oue8OKFXtnw7UrVFjDocObw7UPDcKyZ8K3w6sEAAA=
 #
