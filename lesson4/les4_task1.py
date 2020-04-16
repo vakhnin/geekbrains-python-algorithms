@@ -66,3 +66,21 @@ cProfile.run('summa3(50)')  # 1    0.000    0.000    0.000    0.000 les4_task1.p
 cProfile.run('summa3(100)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
 cProfile.run('summa3(300)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
 cProfile.run('summa3(500)')  # 1    0.000    0.000    0.000    0.000 les4_task1.py:26(summa3)
+
+# Подсчет суммы чисел от 0 до n реализован в виде функций: рекурсивно, циклом и по формулам.
+# Задача не очень сложная, но хорошо подходит для анализа.
+#
+# При помощи timeit было замерено время выполнения при n = (10, 50, 100, 300, 500)
+# и составлены графики (графики можно смотреть по одному):
+# http://grafikus.ru/#H8KLCADChhfCl14CA8K1wpPDi27CgzAQRcO/w4VrasONw7htfsKlw6oiVVM1agjCkcKgKijDisK/d0wwNsKqwoPClEVYw4Q3w4PDsRU5Jhc2NMKHE8KrGcKrKMOtwoZbw7rCmMOXw6F4W8OHwoUZEzPDjsKTwpnDucKlw4UCUMO6wqLCpMKnw7TDmVHDhCnCscO6w4IgfMO0NMOqaMOSwoZGDAVhw7/CtcKiPMOfPcO3w7ltw7oWwrcOwrEtbAEOAMKoLULCusOkw5ITUMKxQhUKwpdIwpQmwrAiw5XDpjBqLcKNXy7Ch8KBwpXCkcKVK1YLwqNlKlYBVRHDtT5DwoXCsMOOwqlUOz3CgcKOaGbDghRmwrYwc8O/ZjQMw4fDkcO9NMONLsOIOx5Ow7vDmWPDl8K0bR/CjgbClh/DvsKgbMKwFsOTw5N7wrUhGyXDqsOkw4RswrkGLcOzVnAbwq7CqcOUZMOnw6LDrX3DmWDCnBIuY8KfK1tsw4nClsKPw4kWPHvCpcOBwqBQw7sXw5Blw5vDiMOzM8KhwpfDi0bCtsKgG8K5w4vDvi0LWcKQLcK4wrLCiRTDisK7CBdsS8Kuw50KNhF+wp5vecOfN2HDp8Oue8OKFXtnw7UrVFjDocObw7UPDcKyZ8K3w6sEAAA=
+#
+# По графикам видим что рекурсивный и с циклом реализации алгоритмоф имеют вычислительную сложность O(n)
+# При этом, рекурсия из-за больших накладных расходов на вызов функций имеет больший константный коэфицциент.
+# На больших n рекурсия будет давать намного худшие результаты, чем цикл.
+#
+# Вычисление по формуле имеет вычислительную сложность O(1).
+# То есть, при любой величине n
+# (не учитыввая то что при очень больших n числа будут хранится не в одном машинном слове)
+# вычисление суммы буцдет происходить примерно за одно время.
+#
+# Профилирование выявило узкое место в рекурсивных вывзовах. Для остальных реализаций узких мест не выявлено.
