@@ -1,33 +1,42 @@
 from _collections import deque
+import random
 
-table = tuple("0123456789ABCDEF")
-
-a = "A2"
-b = "C4F"
-
-if len(a) < len(b):
-    a, b = b, a
-
-print(a)
-print(b)
+TABLE = tuple("0123456789ABCDEF")
 
 
 def sum_hex(a_, b_):
     c = deque()
     transfer = 0
+
+    if len(a_) < len(b_):
+        a_, b_ = b_, a_
+
     while a_:
-        c1 = table.index(a_.pop())
-        c2 = table.index(b_.pop()) if b_ else 0
+        c1 = TABLE.index(a_.pop())
+        c2 = TABLE.index(b_.pop()) if b_ else 0
         res_spam = c1 + c2 + transfer
-        if res_spam > len(table):
-            res_spam -= len(table)
+        if res_spam >= len(TABLE):
+            res_spam -= len(TABLE)
             transfer = 1
         else:
             transfer = 0
-        c.appendleft(table[res_spam])
+        c.appendleft(TABLE[res_spam])
     if transfer:
-        c.appendleft(table[transfer])
+        c.appendleft(TABLE[transfer])
     return c
 
 
-print(sum_hex(deque(a), deque(b)))
+def test_sum(func):
+    for i in range(15):
+        a_ = random.randint(0, 5000)
+        b_ = random.randint(0, 5000)
+        assert f'{a_+b_:X}' == ''.join(func(deque(f'{a_:X}'), deque(f'{b_:X}')))
+        print(f'Test {a_:X}+{b_:X}={a_+b_:X} OK')
+
+
+a = "A2"
+b = "C4F"
+
+test_sum(sum_hex)
+
+print(''.join(sum_hex(deque(a), deque(b))))
