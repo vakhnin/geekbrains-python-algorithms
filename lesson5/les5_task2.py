@@ -1,4 +1,5 @@
-from _collections import deque
+# В этом задании использована коллекция deque
+from collections import deque
 import random
 
 TABLE = tuple("0123456789ABCDEF")
@@ -34,8 +35,8 @@ def test_sum(func):
         print(f'Test {a_:X}+{b_:X}={a_+b_:X} OK')
 
 
-a = "A2"
-b = "C4F"
+a = input('Введите первое число:')
+b = input('Введите второе число:')
 
 test_sum(sum_hex)
 
