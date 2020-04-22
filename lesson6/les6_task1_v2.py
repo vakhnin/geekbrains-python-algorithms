@@ -33,6 +33,7 @@ SIZE = 30
 MIN_ITEM = -30
 MAX_ITEM = 30
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
+array = tuple(array)
 
 if len(array) < 2:
     print("В массиве меньше двух элементов")
@@ -59,5 +60,5 @@ show(0, SIZE, MIN_ITEM, MAX_ITEM, array, 2, less, more_less, "В массиве 
 
 # Windows 10 64 разрядная
 # Python 3.7 32 разрядный
-# Программа занимает 680 байт без учета строк в print и
-# 1008 байт с учетом строк в print
+# Программа занимает 420 байт без учета строк в print и
+# 980 байт с учетом строк в print
