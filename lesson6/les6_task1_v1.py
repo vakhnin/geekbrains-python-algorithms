@@ -4,16 +4,29 @@ import random
 import sys
 
 
-def show(x):
-    print(f'type={type(x)}, size={sys.getsizeof(x)}, obj={x}')
-    if hasattr(x, '__iter__'):
-        if hasattr(x, 'items'):
-            for key, value in x.items():
-                show(key)
-                show(value)
-        elif not isinstance(x, str):
-            for item in x:
-                show(item)
+def show(indent, *obj):
+    summa = 0
+    for x in obj:
+        summa += sys.getsizeof(x)
+        print("  " * indent, f'type={type(x)}, size={sys.getsizeof(x)}, obj={x}')
+        summa_spam = 0
+        if hasattr(x, '__iter__'):
+            if hasattr(x, 'items'):
+                for key, value in x.items():
+                    summa_spam += show(indent + 1, key)
+                    summa_spam += show(indent + 1, value)
+                summa += summa_spam
+                if len(obj) > 1:
+                    print("  " * (indent + 1), f'Total: {summa_spam}')
+            elif not isinstance(x, str):
+                for item in x:
+                    summa_spam += show(indent + 1, item)
+                summa += summa_spam
+                if len(obj) > 1:
+                    print("  " * (indent + 1), f'Total: {summa_spam}')
+    if len(obj) > 1 or indent is 0:
+        print("  " * indent, f'Total: {summa}')
+    return summa
 
 
 SIZE = 30
@@ -38,6 +51,13 @@ for i in range(2, len(array)):
 
 print("Исходный массив")
 print(array)
-print(f'Минимальный элемент: {more_less} второй по минимальности элемент: {less}')
+print(f'Минимальный элемент: {more_less} второй по минимальности элемент: {less}\n')
 
-show(array)
+show(0, SIZE, MIN_ITEM, MAX_ITEM, array, 2, less, more_less)
+show(0, SIZE, MIN_ITEM, MAX_ITEM, array, 2, less, more_less, "В массиве меньше двух элементов", "Исходный массив",
+     f'Минимальный элемент: {more_less} второй по минимальности элемент: {less}\n')
+
+# Windows 10 64 разрядная
+# Python 3.7 32 разрадный
+# Программа занимает 680 байт без учета строк в print и
+# 1008 байт с учетом строк в print
