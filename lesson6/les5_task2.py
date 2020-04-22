@@ -1,10 +1,14 @@
+# Функции сложения и умножения универсальны, для любой системы счисления и любым обозначением цифр.
+# Для перехода на другую систему счисления достаточно отредактировать TABLE. В коде есть функция проверки правильности
+# сложения и умножения в восьмеричной системе счисления
 from collections import deque
 import random
 
 TABLE = tuple("0123456789ABCDEF")
+# Для проверки правильности умножения и сложения в восьмеричной системе счисления, раскомментируйте строку ниже
+# TABLE = tuple("01234567")
 SIZE = len(TABLE)
 INDEX = {}
-print(iter(TABLE))
 for j, item in enumerate(TABLE):
     INDEX[item] = j
 
@@ -76,14 +80,22 @@ def test_mult(func):
         print(f'Test {a_:X}*{b_:X}={a_ + b_:X} OK')
 
 
-# a = input('Введите первое число:').upper()
-# b = input('Введите второе число:').upper()
+def test_mult_oct(func):
+    for i in range(15):
+        a_ = random.randint(0, 5000)
+        b_ = random.randint(0, 5000)
+        assert f'{a_ * b_:o}' == ''.join(func(deque(f'{a_:o}'), deque(f'{b_:o}')))
+        print(f'Test {a_:o}*{b_:o}={a_ + b_:o} OK')
 
-a = "A2"
-b = "C4F"
+
+a = input('Введите первое число:').upper()
+b = input('Введите второе число:').upper()
 
 # test_sum(sum_hex)
+# Для проверики правильности сложения и умножения закоментируйте строку с test_mult(mult_hex)
+# и раскомментируйте test_mult_oct(mult_hex)
 test_mult(mult_hex)
+# test_mult_oct(mult_hex)
 
 print(''.join(sum_hex(deque(a), deque(b))))
 print(''.join(mult_hex(deque(a), deque(b))))
