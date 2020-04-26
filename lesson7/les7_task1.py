@@ -14,12 +14,17 @@ def test_sort(arr):
 
 
 def bubble_sort(arr):
-    n = 1
-    while n < len(arr):
-        for i in range(len(arr) - 1):
+    is_swap = True
+    idx_swap = len(arr) - 1
+    # Если на предыдущем проходе не менялись местами элементами, массив отсортирован, выходим
+    while is_swap:
+        is_swap = False
+        # После элементов обмена массив можно не проходить. Хвост массива уже отсортирован
+        for i in range(idx_swap):
             if arr[i] < arr[i + 1]:
                 arr[i], arr[i + 1] = arr[i + 1], arr[i]
-        n += 1
+                idx_swap = i
+                is_swap = True
 
 
 print("Исходный массив")
