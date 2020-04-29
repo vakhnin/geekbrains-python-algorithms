@@ -1,4 +1,11 @@
 # Закодируйте любую строку по алгоритму Хаффмана.
+#
+# Итоговый словарь кодирования сильно зависит от порядка символов с одной частотностью.
+# Для получения словаря, как в методичке сортировал символы по увеличению кода ASCII (строка 40)
+# Онлайн переводчики, для строки "beep boop beer!" выдают другие кодовые таблицы.
+#
+# То что таблицы разные не важно, так как при раскодирования нужен словарь.
+# То есть если при кодировании и раскодировании используется один словарь, строка будет восстановлена без ошибок.
 import collections
 
 
@@ -59,12 +66,21 @@ def huffman_encode(str_for_encode, code_table_):
 
         trees_list.insert(i, Node(item_left.frequency + item_right.frequency, None, item_left, item_right))
 
-    code_table_ = {}
     get_code_table(item_left, code_table_)
 
     return encode_str(code_table_, str_for_encode)
 
 
+def test_huffman_encode(func):
+    data = ["beep boop beer!", "0011 1110 1011 0001 0010 1010 1100 1111 1000 1001"]
+    data[1] = data[1].replace(" ", "")
+    spam = {}
+    assert data[1] == func(data[0], spam)
+    print('Тест пройден\n')
+
+
 code_table = {}
+test_huffman_encode(huffman_encode)
+print('Строка "beep boop beer!" кодируется как:')
 print(huffman_encode("beep boop beer!", code_table))
-print("0011 1110 1011 0001 0010 1010 1100 1111 1000 1001" == "0011 1110 1011 0001 0010 1010 1100 1111 1000 1001")
+print('С кодовой таблицей: ', code_table)
